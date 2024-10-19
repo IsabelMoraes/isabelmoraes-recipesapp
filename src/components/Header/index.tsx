@@ -14,6 +14,7 @@ import favoriteIcon from '../../images/favoriteIcon.svg';
 
 function Header({ title, withSearchIcons }: HeaderProps) {
   const [showSearchBar, setShowSearchBar] = useState<boolean>(false);
+
   const headerImage = () => {
     switch (title) {
       case 'Meals':
@@ -30,13 +31,15 @@ function Header({ title, withSearchIcons }: HeaderProps) {
         return '';
     }
   };
+
   return (
     <>
       <div className="header-container">
-        <img src={ logoAppSM } alt="" />
+        <img src={ logoAppSM } alt="Logo" />
 
-        <img src={ logoAppSM2 } alt="" />
-
+        <Link to="/meals">
+          <img src={ logoAppSM2 } alt="Logo 2" />
+        </Link>
         <div className="header-container-btns">
           {withSearchIcons && (
             <button onClick={ () => setShowSearchBar(!showSearchBar) }>
@@ -50,10 +53,8 @@ function Header({ title, withSearchIcons }: HeaderProps) {
         </div>
       </div>
       <div className="title-hero">
-        <img src={ headerImage() } alt="" />
-        <h1 data-testid="page-title">
-          {title}
-        </h1>
+        <img src={ headerImage() } alt="Header Icon" />
+        <h1 data-testid="page-title">{title}</h1>
       </div>
       {showSearchBar && <SearchBar isDrink={ title === 'Drinks' } />}
     </>

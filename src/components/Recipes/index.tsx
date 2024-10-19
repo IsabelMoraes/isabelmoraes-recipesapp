@@ -8,18 +8,18 @@ import allEmoji from '../../images/allEmoji.svg';
 import allEmojiDrink from '../../images/allEmojiDrink.png';
 
 function Recipes({ isDrink }: { isDrink: boolean }) {
-  const { recipes, setRecipes } = useRecipe(isDrink);
+  const { recipes, setRecipes, clearFilter } = useRecipe(isDrink);
   const categories = useCategory(isDrink);
-  const { handleClick, handleClearFilter } = useSelectedCategory({
+  const { handleClick } = useSelectedCategory({
     isDrink,
     recipes,
     setRecipes,
   });
-  console.log(categories);
+
   return (
     <div className="recipes-container">
       <div className="recipes-category-container">
-        <button data-testid="All-category-filter" onClick={ handleClearFilter }>
+        <button data-testid="All-category-filter" onClick={ clearFilter }>
           <img src={ isDrink ? allEmojiDrink : allEmoji } alt="" />
           All
         </button>
