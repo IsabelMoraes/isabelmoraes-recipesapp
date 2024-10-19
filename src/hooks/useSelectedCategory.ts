@@ -33,7 +33,7 @@ export const useSelectedCategory = ({
         .then((data) => data.meals.slice(0, 12))
         .then((data) => setRecipes(data));
     }
-  }, [selectedCategory]);
+  }, [isDrink, recipes, selectedCategory, setRecipes]);
 
   const handleClick = (event: any) => {
     const category = event.target.value;

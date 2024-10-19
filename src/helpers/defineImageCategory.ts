@@ -1,4 +1,3 @@
-import profileIcon from '../images/profileIcon.svg';
 import goatEmoji from '../images/goatEmoji.svg';
 import dessertEmoji from '../images/dessertEmoji.svg';
 import chickenEmoji from '../images/chickenEmoji.svg';

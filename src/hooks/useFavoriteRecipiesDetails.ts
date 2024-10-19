@@ -13,7 +13,7 @@ export const useFavoriteRecipiesDetails = (recipe: any, isDrink: boolean) => {
       || favoriteRecipes?.some((favorite: any) => favorite.id === recipe.idDrink)
     ) setIsFavorite(true);
     else setIsFavorite(false);
-  }, [favoriteRecipes]);
+  }, [favoriteRecipes, recipe.idDrink, recipe.idMeal]);
 
   const addFavorite = (newFavorite: any) => {
     if (!favoriteRecipes) {

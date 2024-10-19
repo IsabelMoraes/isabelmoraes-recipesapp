@@ -1,4 +1,11 @@
-function RecipeDetailsCarrousel({ recomendations }: { recomendations: any }) {
+function RecipeDetailsCarrousel({ recomendations = [] }: { recomendations: any }) {
+  console.log('Recomendations:', recomendations); // Para verificar a estrutura dos dados
+
+  // Verifique se recomendations é um array
+  if (!Array.isArray(recomendations)) {
+    return <p>No recommendations available.</p>;
+  }
+
   return (
     <div className="carousel-container">
       {recomendations.map((recomendation: any, index: number) => (

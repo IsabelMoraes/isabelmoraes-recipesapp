@@ -18,7 +18,7 @@ export const useCategory = (isDrink: boolean) => {
       setCategories(first5Categories);
     };
     fetchCategories();
-  }, []);
+  }, [endpoint, param]);
 
   return categories;
 };

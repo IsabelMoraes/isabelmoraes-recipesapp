@@ -67,7 +67,7 @@ function RecipeDetails({ isDrink }: { isDrink: boolean }) {
         console.log(first6Recomendations);
         setRecomendations(first6Recomendations);
       });
-  }, []);
+  }, [id, isDrink]);
 
   const handleClick = () => {
     if (isDrink) {
