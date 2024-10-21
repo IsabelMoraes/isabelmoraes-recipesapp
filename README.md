@@ -15,7 +15,8 @@ Nele você poderá ver, buscar, filtrar, favoritar e acompanhar o progresso de p
 isarecipe.surge.sh
 
 ## o que você verá!
-<div style="text-align: center;">
+<div style="align: center;">
+
 ![Login page](./src/images/loginapp.png)
 
 <p > Não se esqueça dos seus dados pessoais de login _(acesse o README para encontrar)_ </p>
