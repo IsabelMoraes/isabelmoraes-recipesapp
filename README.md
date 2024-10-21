@@ -4,13 +4,15 @@
   <img src="https://img.shields.io/badge/node-18-blue.svg" />
 </p>
 
-> Eis o teu App de receitas! Prepare deliciosos pratos a um clique de distância
-Nele você poderá ver, buscar, filtrar, favoritar e acompanhar o progresso de preparação de receitas de comidas e bebidas!
+>O layout tem como foco dispositivos móveis. Assim, todos os protótipos estarão desenvolvidos em telas menores.<br>
 
+Eis o teu App de receitas! Prepare deliciosos pratos a um clique de distância<br>
+Nele você poderá ver, buscar, filtrar, favoritar e acompanhar o progresso de preparação de receitas de comidas e bebidas!<br>
+<br>
 
-O layout tem como foco dispositivos móveis. Assim, todos os protótipos estarão desenvolvidos em telas menores.
+### 🏠 [Homepage]
 
-### 🏠 [Homepage](isarecipe.surge.sh)
+<a href="isarecipe.surge.sh"> Acesse aqui!</a>
 
 ## o que você verá!
 
@@ -22,15 +24,15 @@ Não se esqueça dos seus dados pessoais de login _(acesse o README para encontr
 
 ![App video](./src/images/recipeapp.gif)
 
-## Tech SKills utilizadas
- _Na base de dados serão duas APIs distintas: uma para comidas e outra para bebidas._
- _Redux para gerenciar estado._
- _Biblioteca React-Redux._
- _Context API do React para gerenciar estado._
- _React Hook useState._
- _React Hook useContext._
- _React Hook useEffect._
- _Hooks customizados._
+## Tech Skills utilizadas
+ _Na base de dados serão duas APIs distintas: uma para comidas e outra para bebidas._<br>
+ _Redux para gerenciar estado._<br>
+ _Biblioteca React-Redux._<br>
+ _Context API do React para gerenciar estado._<br>
+ _React Hook useState._<br>
+ _React Hook useContext._<br>
+ _React Hook useEffect._<br>
+ _Hooks customizados._<br>
 
 ## Prerequisites
 
