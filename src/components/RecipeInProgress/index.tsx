@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import { useNavigate, useParams } from 'react-router-dom';
 import './styles.css';
 import '../RecipeDetails/styles.css';
@@ -13,6 +14,7 @@ import { useCheckedStatus } from '../../hooks/useCheckedStatus';
 import IngredientItem from './IngredientItem';
 import { defineImageCategory } from '../../helpers/defineImageCategory';
 import { formatUrl } from '../../helpers/formatUrl';
+import Header from '../Header';
 
 function RecipeInProgress({ isDrink }: { isDrink: boolean }) {
   const [recipe, setRecipe] = useState<any>({});
@@ -50,102 +52,112 @@ function RecipeInProgress({ isDrink }: { isDrink: boolean }) {
   }, []);
 
   return (
-    <div className="recipe-details-container">
-      <img
-        src={ recipe?.strMealThumb || recipe?.strDrinkThumb }
-        alt={ recipe?.strMeal || recipe?.strDrink }
-        data-testid="recipe-photo"
-        className="recipe-photo"
-      />
-      <div className="recipe-details-header">
-        <div className="header-container-control">
-          <div className="recipe-details-header_info">
-            <p data-testid="recipe-category">
-              {recipe.strAlcoholic || recipe.strCategory}
-            </p>
-            <img
-              className="category-icon"
-              src={ defineImageCategory(recipe.strCategory) }
-              alt=""
-            />
-          </div>
-          <div className="recipe-details-header_btns">
-            <button
-              type="button"
-              data-testid="share-btn"
-              onClick={ handleShareClick }
-            >
-              {copyStatus !== '' ? (
-                <p>{copyStatus}</p>
-              ) : (
-                <img src={ shareIcon } alt="share" />
-              )}
-            </button>
-            <button type="button" onClick={ handleFavoriteClick }>
-              {isFavorite ? (
-                <img
-                  src={ blackHeartIcon }
-                  alt="share"
-                  data-testid="favorite-btn"
-                />
-              ) : (
-                <img
-                  src={ whiteHeartIcon }
-                  alt="share"
-                  data-testid="favorite-btn"
-                />
-              )}
-            </button>
-          </div>
-        </div>
-        <h1 data-testid="recipe-title">{recipe.strMeal || recipe.strDrink}</h1>
-      </div>
+    <div>
       <div>
-        <h1>Ingredients</h1>
-        <div className="ingredients-list" data-testid="ingredient-card">
-          {ingredients.map((ingredient, index) => (
-            <IngredientItem
-              key={ index }
-              recipe={ recipe }
-              ingredient={ ingredient }
-              measures={ measures }
-              index={ index }
-              checked={ checked }
-              handleChecked={ handleChecked }
-            />
-          ))}
-        </div>
+        <Header title="" withSearchIcons={ false } />
       </div>
-      <h1>Instructions</h1>
-      <p className="instructions" data-testid="instructions">{recipe?.strInstructions}</p>
-      {newUrl !== '' && (
-        <>
-          <h1
-            style={ {
-              margin: '10px 0 20px 0',
-            } }
-          >
-            Video
-          </h1>
-          <iframe
-            width="360"
-            height="215"
-            src={ newUrl }
-            title="YouTube video player"
-            allowFullScreen
-            data-testid="video"
-          />
-        </>
-      )}
+      <div className="recipe-details-container">
+        <img
+          src={ recipe?.strMealThumb || recipe?.strDrinkThumb }
+          alt={ recipe?.strMeal || recipe?.strDrink }
+          data-testid="recipe-photo"
+          className="recipe-photo"
+        />
+        <div className="recipe-details-header">
+          <div className="header-container-control">
+            <div className="recipe-details-header_info">
+              <p data-testid="recipe-category">
+                {recipe.strAlcoholic || recipe.strCategory}
+              </p>
+              <img
+                className="category-icon"
+                src={ defineImageCategory(recipe.strCategory) }
+                alt=""
+              />
+            </div>
+            <div className="recipe-details-header_btns">
+              <button
+                type="button"
+                data-testid="share-btn"
+                onClick={ handleShareClick }
+              >
+                {copyStatus !== '' ? (
+                  <p>{copyStatus}</p>
+                ) : (
+                  <img src={ shareIcon } alt="share" />
+                )}
+              </button>
+              <button type="button" onClick={ handleFavoriteClick }>
+                {isFavorite ? (
+                  <img
+                    src={ blackHeartIcon }
+                    alt="share"
+                    data-testid="favorite-btn"
+                  />
+                ) : (
+                  <img
+                    src={ whiteHeartIcon }
+                    alt="share"
+                    data-testid="favorite-btn"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+          <h1 data-testid="recipe-title">{recipe.strMeal || recipe.strDrink}</h1>
+        </div>
+        <div>
+          <h1>Ingredients</h1>
+          <div className="ingredients-list" data-testid="ingredient-card">
+            {ingredients.map((ingredient, index) => (
+              <IngredientItem
+                key={ index }
+                recipe={ recipe }
+                ingredient={ ingredient }
+                measures={ measures }
+                index={ index }
+                checked={ checked }
+                handleChecked={ handleChecked }
+              />
+            ))}
+          </div>
+        </div>
+        <h1>Instructions</h1>
+        <p
+          className="instructions"
+          data-testid="instructions"
+        >
+          {recipe?.strInstructions}
+        </p>
+        {newUrl !== '' && (
+          <>
+            <h1
+              style={ {
+                margin: '10px 0 20px 0',
+              } }
+            >
+              Video
+            </h1>
+            <iframe
+              width="360"
+              height="215"
+              src={ newUrl }
+              title="YouTube video player"
+              allowFullScreen
+              data-testid="video"
+            />
+          </>
+        )}
 
-      <button
-        disabled={ !allChecked }
-        className="start-recipe-btn"
-        data-testid="finish-recipe-btn"
-        onClick={ handleFinishClick }
-      >
-        Finish Recipe
-      </button>
+        <button
+          disabled={ !allChecked }
+          className="start-recipe-btn"
+          data-testid="finish-recipe-btn"
+          onClick={ handleFinishClick }
+        >
+          Finish Recipe
+        </button>
+      </div>
     </div>
   );
 }

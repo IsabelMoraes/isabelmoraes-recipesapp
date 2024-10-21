@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import './styles.css';
@@ -11,6 +12,7 @@ import { formatUrl } from '../../helpers/formatUrl';
 import { formatIngredientsAndMeasures } from '../../helpers/formatIngredientsAndMesures';
 import { useFavoriteRecipiesDetails } from '../../hooks/useFavoriteRecipiesDetails';
 import { defineImageCategory } from '../../helpers/defineImageCategory';
+import Header from '../Header';
 
 function RecipeDetails({ isDrink }: { isDrink: boolean }) {
   const { id } = useParams<{ id: string }>();
@@ -78,103 +80,109 @@ function RecipeDetails({ isDrink }: { isDrink: boolean }) {
   };
 
   return (
-    <div className="recipe-details-container">
-      <img
-        src={ recipe.strMealThumb || recipe.strDrinkThumb }
-        alt=""
-        className="recipe-photo"
-        data-testid="recipe-photo"
-      />
-      <div className="recipe-details-header">
-        <div className="header-container-control">
-          <div className="recipe-details-header_info">
-            <p data-testid="recipe-category">
-              {recipe.strAlcoholic || recipe.strCategory}
-            </p>
-            <img
-              className="category-icon"
-              src={ defineImageCategory(recipe.strCategory) }
-              alt=""
-            />
-          </div>
-          <div className="recipe-details-header_btns">
-            <button
-              type="button"
-              data-testid="share-btn"
-              onClick={ handleShareClick }
-            >
-              {copyStatus !== '' ? (
-                <p>{copyStatus}</p>
-              ) : (
-                <img src={ shareIcon } alt="share" />
-              )}
-            </button>
-            <button type="button" onClick={ handleFavoriteClick }>
-              {isFavorite ? (
-                <img
-                  src={ blackHeartIcon }
-                  alt="share"
-                  data-testid="favorite-btn"
-                />
-              ) : (
-                <img
-                  src={ whiteHeartIcon }
-                  alt="share"
-                  data-testid="favorite-btn"
-                />
-              )}
-            </button>
-          </div>
-        </div>
-        <h1 data-testid="recipe-title">{recipe.strMeal || recipe.strDrink}</h1>
+    <div>
+      <div>
+        <Header title="" withSearchIcons={ false } />
       </div>
-      <h1>Ingredients</h1>
-      <RecipeDetailsIngredientList
-        ingredients={ ingredients }
-        measures={ measures }
-        recipe={ recipe }
-      />
-      <h1>Instructions</h1>
-      <p data-testid="instructions" className="instructions">
-        {recipe.strInstructions}
-      </p>
+      <div className="recipe-details-container">
+        <img
+          src={ recipe.strMealThumb || recipe.strDrinkThumb }
+          alt=""
+          className="recipe-photo"
+          data-testid="recipe-photo"
+        />
+        <div className="recipe-details-header">
+          <div className="header-container-control">
+            <div className="recipe-details-header_info">
+              <p data-testid="recipe-category">
+                {recipe.strAlcoholic || recipe.strCategory}
+              </p>
+              <img
+                className="category-icon"
+                src={ defineImageCategory(recipe.strCategory) }
+                alt=""
+              />
+            </div>
+            <div className="recipe-details-header_btns">
+              <button
+                type="button"
+                data-testid="share-btn"
+                onClick={ handleShareClick }
+              >
+                {copyStatus !== '' ? (
+                  <p>{copyStatus}</p>
+                ) : (
+                  <img src={ shareIcon } alt="share" />
+                )}
+              </button>
+              <button type="button" onClick={ handleFavoriteClick }>
+                {isFavorite ? (
+                  <img
+                    src={ blackHeartIcon }
+                    alt="share"
+                    data-testid="favorite-btn"
+                  />
+                ) : (
+                  <img
+                    src={ whiteHeartIcon }
+                    alt="share"
+                    data-testid="favorite-btn"
+                  />
+                )}
+              </button>
+            </div>
+          </div>
+          <h1 data-testid="recipe-title">{recipe.strMeal || recipe.strDrink}</h1>
+        </div>
+        <h1>Ingredients</h1>
+        <RecipeDetailsIngredientList
+          ingredients={ ingredients }
+          measures={ measures }
+          recipe={ recipe }
+        />
+        <h1>Instructions</h1>
+        <p data-testid="instructions" className="instructions">
+          {recipe.strInstructions}
+        </p>
 
-      {newUrl !== '' && (
-        <>
-          <h1
-            style={ {
-              margin: '10px 0 20px 0',
-            } }
-          >
-            Video
-          </h1>
-          <iframe
-            width="360"
-            height="215"
-            src={ newUrl }
-            title="YouTube video player"
-            allowFullScreen
-            data-testid="video"
-          />
-        </>
-      )}
+        {newUrl !== '' && (
+          <>
+            <h1
+              style={ {
+                margin: '10px 0 20px 0',
+              } }
+            >
+              Video
+            </h1>
+            <iframe
+              width="360"
+              height="215"
+              src={ newUrl }
+              title="YouTube video player"
+              allowFullScreen
+              data-testid="video"
+            />
+          </>
+        )}
 
-      <h1
-        style={ {
-          marginTop: '20px',
-        } }
-      >
-        Recommendations
-      </h1>
-      <RecipeDetailsCarrousel recomendations={ recomendations } />
-      <button
-        className="start-recipe-btn"
-        data-testid="start-recipe-btn"
-        onClick={ handleClick }
-      >
-        {setButtonText()}
-      </button>
+        <h1
+          style={ {
+            marginTop: '20px',
+          } }
+        >
+          Recommendations
+        </h1>
+        <RecipeDetailsCarrousel recomendations={ recomendations } />
+        <button
+          className="start-recipe-btn"
+          data-testid="start-recipe-btn"
+          onClick={ handleClick }
+        >
+          {setButtonText()}
+        </button>
+      </div>
     </div>
+
   );
 }
 export default RecipeDetails;

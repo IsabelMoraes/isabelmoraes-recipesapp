@@ -10,6 +10,9 @@ function Login() {
   const [isValid, setIsValid] = useState(false);
   const navigate = useNavigate();
 
+  const MOCK_EMAIL = 'user@user.com';
+  const MOCK_PASSWORD = 'password123';
+
   useEffect(() => {
     const validateInput = () => {
       const regex = /\S+@\S+\.\S+/;
@@ -31,14 +34,19 @@ function Login() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem('user', JSON.stringify({ email }));
-    navigate('/meals');
+    if (email === MOCK_EMAIL && password === MOCK_PASSWORD) {
+      localStorage.setItem('user', JSON.stringify({ email })); // Store user email in localStorage
+      navigate('/meals'); // Redirect to '/meals' after successful login
+    } else {
+      alert('Invalid email or password'); // Display an error message if the credentials are incorrect
+    }
   };
 
   return (
     <div className="login-container">
       <img className="logo" src={ logoApp } alt="" />
       <img className="bg-img" src={ bgImg } alt="" />
+      <p className="login-text">Login</p>
       <form
         data-testid="login-form"
         onSubmit={ (e) => handleSubmit(e) }

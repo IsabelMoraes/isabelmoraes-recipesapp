@@ -11,6 +11,7 @@ export type InputProps = {
   id?: string;
   labelText?: string;
   name?: string;
+  checked?: boolean;
 };
 
 export type DoneRecipe = {

@@ -5,7 +5,7 @@ import apiRequestDrink from '../../services/ApiRequestDrink';
 import Input from '../Input';
 
 function SearchBar({ isDrink }: { isDrink: boolean }) {
-  const [selectedRadio, setSelectedRadio] = useState<string>('');
+  const [selectedRadio, setSelectedRadio] = useState<string>('name');
   const [inputVal, setInputVal] = useState<string>('');
   const navigate = useNavigate();
 
@@ -56,15 +56,6 @@ function SearchBar({ isDrink }: { isDrink: boolean }) {
       />
       <div className="search-bar-radio-container">
         <Input
-          labelText="Ingredient"
-          dataTestId="ingredient-search-radio"
-          type="radio"
-          name="radio"
-          value="ingredient"
-          id="ingredient-search-radio"
-          onChange={ (e) => setSelectedRadio(e.target.value) }
-        />
-        <Input
           labelText="Name"
           dataTestId="name-search-radio"
           type="radio"
@@ -72,6 +63,17 @@ function SearchBar({ isDrink }: { isDrink: boolean }) {
           value="name"
           id="name-search-radio"
           onChange={ (e) => setSelectedRadio(e.target.value) }
+          checked={ selectedRadio === 'name' }
+        />
+        <Input
+          labelText="Ingredient"
+          dataTestId="ingredient-search-radio"
+          type="radio"
+          name="radio"
+          value="ingredient"
+          id="ingredient-search-radio"
+          onChange={ (e) => setSelectedRadio(e.target.value) }
+          checked={ selectedRadio === 'ingredient' }
         />
         <Input
           labelText="First letter"
@@ -81,6 +83,7 @@ function SearchBar({ isDrink }: { isDrink: boolean }) {
           value="first-letter"
           id="first-letter-search-radio"
           onChange={ (e) => setSelectedRadio(e.target.value) }
+          checked={ selectedRadio === 'first-letter' }
         />
       </div>
       <button data-testid="exec-search-btn">Buscar</button>

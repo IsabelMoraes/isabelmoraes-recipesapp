@@ -53,7 +53,7 @@ function Header({ title, withSearchIcons }: HeaderProps) {
         </div>
       </div>
       <div className="title-hero">
-        <img src={ headerImage() } alt="Header Icon" />
+        <img src={ headerImage() } alt=" " />
         <h1 data-testid="page-title">{title}</h1>
       </div>
       {showSearchBar && <SearchBar isDrink={ title === 'Drinks' } />}
