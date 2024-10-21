@@ -12,17 +12,18 @@ Nele você poderá ver, buscar, filtrar, favoritar e acompanhar o progresso de p
 
 ### 🏠 [Homepage]
 
-<a href="isarecipe.surge.sh"> Acesse aqui!</a>
+isarecipe.surge.sh
 
 ## o que você verá!
-
+<div style="text-align: center;">
 ![Login page](./src/images/loginapp.png)
 
-Não se esqueça dos seus dados pessoais de login _(acesse o README para encontrar)_
+<p > Não se esqueça dos seus dados pessoais de login _(acesse o README para encontrar)_ </p>
 <!-- email: user@user.com    pass: password123 -->
 
 
 ![App video](./src/images/recipeapp.gif)
+</div>
 
 ## Tech Skills utilizadas
  _Na base de dados serão duas APIs distintas: uma para comidas e outra para bebidas._<br>
